@@ -363,12 +363,6 @@ body.light .file-item:hover { border-color:rgba(217,119,6,.4); background:rgba(2
 body.light .back-btn { background:rgba(255,255,255,.9); color:#475569; border-color:rgba(0,0,0,.12); }
 body.light .back-btn:hover { background:#fff; color:#1a2035; border-color:rgba(217,119,6,.4); }
 
-body.light .progress-section { background:rgba(255,255,255,.9); border-color:rgba(0,0,0,.1); }
-body.light .progress-title { color:#64748b; }
-body.light .p-stat { color:#64748b; }
-body.light .p-stat span { color:#1a2035; }
-body.light .progress-bar-bg { background:rgba(0,0,0,.1); }
-
 body.light .search-input { background:rgba(255,255,255,.95); color:#1a2035; border-color:rgba(0,0,0,.12); }
 body.light .search-input::placeholder { color:#94a3b8; }
 body.light .search-results { background:linear-gradient(180deg,#fff,#f8faff); border-color:rgba(217,119,6,.2); }
@@ -500,6 +494,7 @@ body.light .b-btn { background:rgba(0,0,0,.05); border-color:rgba(0,0,0,.1); col
 .search-wrap {
   position:relative; margin-bottom:28px;
   animation:fadeDown .5s .2s ease both;
+  z-index:400;
 }
 .search-input {
   width:100%; padding:14px 50px 14px 20px;
@@ -512,11 +507,12 @@ body.light .b-btn { background:rgba(0,0,0,.05); border-color:rgba(0,0,0,.1); col
 .search-input::placeholder { color:var(--muted); }
 .search-icon { position:absolute; left:16px; top:50%; transform:translateY(-50%); font-size:18px; pointer-events:none; }
 .search-results {
-  position:absolute; top:calc(100% + 8px); right:0; left:0; z-index:100;
+  position:absolute; top:calc(100% + 8px); right:0; left:0; z-index:500;
   background:linear-gradient(180deg,#0d1117,#030712);
   border:1px solid rgba(251,191,36,.2); border-radius:16px;
   overflow:hidden; display:none;
-  box-shadow:0 20px 60px rgba(0,0,0,.5);
+  box-shadow:0 20px 60px rgba(0,0,0,.7);
+  max-height:350px; overflow-y:auto;
 }
 .search-results.open { display:block; }
 .search-result-item {
@@ -534,23 +530,6 @@ body.light .b-btn { background:rgba(0,0,0,.05); border-color:rgba(0,0,0,.1); col
 body.light .search-input { background:rgba(255,255,255,.8); color:#1e293b; border-color:rgba(0,0,0,.1); }
 body.light .search-results { background:linear-gradient(180deg,#fff,#f8faff); }
 body.light .search-result-item { color:#1e293b; }
-
-/* PROGRESS BAR */
-.progress-section {
-  margin-bottom:28px;
-  background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08);
-  border-radius:18px; padding:18px 22px;
-  animation:fadeUp .5s .1s ease both;
-}
-body.light .progress-section { background:rgba(255,255,255,.8); border-color:rgba(0,0,0,.08); }
-.progress-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; }
-.progress-title { font-size:14px; font-weight:700; color:var(--muted); }
-.progress-pct { font-size:16px; font-weight:900; background:linear-gradient(135deg,#fbbf24,#10b981); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
-.progress-bar-bg { height:8px; background:rgba(255,255,255,.08); border-radius:999px; overflow:hidden; }
-.progress-bar-fill { height:100%; background:linear-gradient(90deg,#fbbf24,#10b981); border-radius:999px; transition:width 1s cubic-bezier(.34,1.56,.64,1); }
-.progress-stats { display:flex; gap:16px; margin-top:12px; }
-.p-stat { font-size:12px; color:var(--muted); }
-.p-stat span { color:var(--text); font-weight:700; }
 
 /* STAR RATING */
 .rating-wrap { display:flex; align-items:center; gap:6px; margin-top:6px; }
@@ -601,22 +580,72 @@ body.light .toast { background:linear-gradient(135deg,#fff,#f0f4ff); color:#1e29
       <button class="modal-close" onclick="closeModal('aboutModal')">✕</button>
     </div>
     <p style="color:var(--muted);font-size:14px;line-height:1.9;margin-bottom:16px">منصة تعليمية متكاملة تم تصميمها لمساعدة طلاب المرحلة الثانوية في الوصول إلى الملفات الدراسية والاستعداد للاختبارات بأفضل طريقة ممكنة.</p>
+    <p style="color:#fbbf24;font-size:12px;text-align:center;margin-bottom:12px">💡 اضغط على أي إحصائية لمعرفة تفاصيلها</p>
     <div class="stat-grid">
-      <div class="stat-card"><div class="stat-num">+500</div><div class="stat-label">طالب مستفيد</div></div>
-      <div class="stat-card"><div class="stat-num">92%</div><div class="stat-label">نسبة النجاح</div></div>
-      <div class="stat-card"><div class="stat-num">+50</div><div class="stat-label">ملف دراسي</div></div>
-      <div class="stat-card"><div class="stat-num">+30</div><div class="stat-label">اختبار نهائي</div></div>
-      <div class="stat-card"><div class="stat-num">98%</div><div class="stat-label">رضا الطلاب</div></div>
-      <div class="stat-card"><div class="stat-num">24/7</div><div class="stat-label">متاح دائماً</div></div>
+      <div class="stat-card" onclick="showStatInfo('+500 طالب مستفيد','يستفيد من المنصة أكثر من 500 طالب من صفوف العاشر والحادي عشر والثاني عشر في مختلف المحافظات، ويزداد العدد باستمرار مع انضمام طلاب جدد كل يوم.')" style="cursor:pointer">
+        <div class="stat-num">+500</div><div class="stat-label">طالب مستفيد</div>
+      </div>
+      <div class="stat-card" onclick="showStatInfo('92% نسبة النجاح','حقق طلاب المنصة نسبة نجاح تتجاوز 92% في الاختبارات النهائية، وذلك بفضل الاختبارات التدريبية والملخصات المنظمة المتوفرة على المنصة.')" style="cursor:pointer">
+        <div class="stat-num">92%</div><div class="stat-label">نسبة النجاح</div>
+      </div>
+      <div class="stat-card" onclick="showStatInfo('+50 ملف دراسي','تضم المنصة أكثر من 50 ملفاً دراسياً شاملاً من اختبارات نهائية وملخصات وملفات مهمة لجميع المواد الدراسية في الصفوف الثلاثة.')" style="cursor:pointer">
+        <div class="stat-num">+50</div><div class="stat-label">ملف دراسي</div>
+      </div>
+      <div class="stat-card" onclick="showStatInfo('+30 اختبار نهائي','يوجد على المنصة أكثر من 30 اختباراً نهائياً لسنوات سابقة في مواد مختلفة كالفيزياء والكيمياء والرياضيات، وهي وسيلة مثالية للمراجعة.')" style="cursor:pointer">
+        <div class="stat-num">+30</div><div class="stat-label">اختبار نهائي</div>
+      </div>
+      <div class="stat-card" onclick="showStatInfo('98% رضا الطلاب','في استطلاع رأي أُجري على طلاب المنصة، أعرب 98% منهم عن رضاهم التام عن جودة المحتوى وسهولة الاستخدام وتنوع الملفات المتاحة.')" style="cursor:pointer">
+        <div class="stat-num">98%</div><div class="stat-label">رضا الطلاب</div>
+      </div>
+      <div class="stat-card" onclick="showStatInfo('24/7 متاح دائماً','المنصة متاحة على مدار الساعة طوال أيام الأسبوع دون انقطاع، يمكنك الوصول إليها في أي وقت من الليل أو النهار من أي جهاز.')" style="cursor:pointer">
+        <div class="stat-num">24/7</div><div class="stat-label">متاح دائماً</div>
+      </div>
     </div>
-    <div class="creator-card">
+    <div id="statInfoBox" style="display:none;background:rgba(251,191,36,.1);border:1px solid rgba(251,191,36,.3);border-radius:14px;padding:16px;margin-top:12px;animation:fadeUp .3s ease">
+      <div style="font-size:14px;font-weight:800;color:#fbbf24;margin-bottom:6px" id="statInfoTitle"></div>
+      <div style="font-size:13px;color:var(--muted);line-height:1.8" id="statInfoText"></div>
+    </div>
+    <div class="creator-card" onclick="openDeveloperInfo()" style="cursor:pointer" title="اضغط لمعرفة معلومات المطور">
       <div class="creator-avatar">👨‍💻</div>
       <div>
         <div style="font-size:17px;font-weight:800;margin-bottom:4px">أنس محمد العاصي</div>
-        <div style="font-size:13px;color:var(--muted);line-height:1.7">مؤسس ومطور منصة المنوفي التعليمية<br>منصة تهدف لرفع المستوى الأكاديمي</div>
+        <div style="font-size:13px;color:var(--muted);line-height:1.7">مؤسس ومطور منصة المنوفي التعليمية<br><span style="color:#fbbf24;font-size:11px">🖱️ اضغط لمعرفة المزيد عن المطور</span></div>
       </div>
     </div>
     <p style="font-size:13px;color:var(--muted);text-align:center;margin-top:8px">🏆 طلاب المنصة حققوا نسب نجاح تتجاوز 92% في الاختبارات النهائية</p>
+  </div>
+</div>
+
+<!-- DEVELOPER INFO MODAL -->
+<div class="modal-overlay" id="devModal" onclick="closeModalOutside(event,'devModal')">
+  <div class="modal-box" style="max-width:480px">
+    <div class="modal-header">
+      <span style="font-size:26px">👨‍💻</span>
+      <h2>المطور</h2>
+      <button class="modal-close" onclick="closeModal('devModal')">✕</button>
+    </div>
+    <div style="text-align:center;padding:10px 0 20px">
+      <div style="font-size:80px;margin-bottom:12px">👨‍🏫</div>
+      <div style="font-size:22px;font-weight:900;background:linear-gradient(135deg,#fbbf24,#10b981);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:20px">أنس محمد العاصي</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div style="background:rgba(251,191,36,.08);border:1px solid rgba(251,191,36,.2);border-radius:14px;padding:14px;display:flex;align-items:center;gap:12px">
+        <span style="font-size:28px">🏫</span>
+        <div><div style="font-size:12px;color:var(--muted)">المدرسة</div><div style="font-size:15px;font-weight:700">مدرسة الخليلي</div></div>
+      </div>
+      <div style="background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);border-radius:14px;padding:14px;display:flex;align-items:center;gap:12px">
+        <span style="font-size:28px">🇪🇬</span>
+        <div><div style="font-size:12px;color:var(--muted)">الجنسية</div><div style="font-size:15px;font-weight:700">مصري</div></div>
+      </div>
+      <div style="background:rgba(139,92,246,.08);border:1px solid rgba(139,92,246,.2);border-radius:14px;padding:14px;display:flex;align-items:center;gap:12px">
+        <span style="font-size:28px">📍</span>
+        <div><div style="font-size:12px;color:var(--muted)">مكان الإقامة</div><div style="font-size:15px;font-weight:700">المنوفية — مصر</div></div>
+      </div>
+      <div style="background:rgba(56,189,248,.08);border:1px solid rgba(56,189,248,.2);border-radius:14px;padding:14px;display:flex;align-items:center;gap:12px">
+        <span style="font-size:28px">💡</span>
+        <div><div style="font-size:12px;color:var(--muted)">عن المنصة</div><div style="font-size:14px;font-weight:600;line-height:1.6">أنشأ هذه المنصة التعليمية لمساعدة زملائه الطلاب في الوصول للمواد الدراسية وتحقيق أعلى النتائج</div></div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -744,7 +773,7 @@ body.light .toast { background:linear-gradient(135deg,#fff,#f0f4ff); color:#1e29
   </div>
 
   <!-- PROGRESS -->
-  <div class="progress-section" id="progressSection"></div>
+
 
   <div id="mainContent"></div>
 </div>
@@ -758,9 +787,23 @@ body.light .toast { background:linear-gradient(135deg,#fff,#f0f4ff); color:#1e29
    ]
    ============================================================ */
 const DATA = {
+  "العاشر": {
+    "الفصل الدراسي الأول": {
+      "دليل المعلم": {"فيزياء":[],"كيمياء":[],"أحياء":[],"التربية الإسلامية":[],"الدراسات الاجتماعية":[],"اللغة الإنجليزية":[],"اللغة العربية":[],"رياضيات":[]},
+      "الاختبارات النهائية": {"فيزياء":[],"كيمياء":[],"أحياء":[],"التربية الإسلامية":[],"الدراسات الاجتماعية":[],"اللغة الإنجليزية":[],"اللغة العربية":[],"رياضيات":[]},
+      "الملخصات": {"فيزياء":[],"كيمياء":[],"أحياء":[],"التربية الإسلامية":[],"الدراسات الاجتماعية":[],"اللغة الإنجليزية":[],"اللغة العربية":[],"رياضيات":[]},
+      "الملفات المهمة": {"فيزياء":[],"كيمياء":[],"أحياء":[],"التربية الإسلامية":[],"الدراسات الاجتماعية":[],"اللغة الإنجليزية":[],"اللغة العربية":[],"رياضيات":[]}
+    },
+    "الفصل الدراسي الثاني": {
+      "دليل المعلم": {"فيزياء":[],"كيمياء":[],"أحياء":[],"التربية الإسلامية":[],"الدراسات الاجتماعية":[],"اللغة الإنجليزية":[],"اللغة العربية":[],"رياضيات":[]},
+      "الاختبارات النهائية": {"فيزياء":[],"كيمياء":[],"أحياء":[],"التربية الإسلامية":[],"الدراسات الاجتماعية":[],"اللغة الإنجليزية":[],"اللغة العربية":[],"رياضيات":[]},
+      "الملخصات": {"فيزياء":[],"كيمياء":[],"أحياء":[],"التربية الإسلامية":[],"الدراسات الاجتماعية":[],"اللغة الإنجليزية":[],"اللغة العربية":[],"رياضيات":[]},
+      "الملفات المهمة": {"فيزياء":[],"كيمياء":[],"أحياء":[],"التربية الإسلامية":[],"الدراسات الاجتماعية":[],"اللغة الإنجليزية":[],"اللغة العربية":[],"رياضيات":[]}
+    }
+  },
   "الحادي عشر": {
     "الفصل الدراسي الأول": {
-      "الاختبارات النهائية": {
+      "دليل المعلم": {
         "التربية الإسلامية": [],
         "اللغة العربية": [],
         "هذا وطني": [],
@@ -773,7 +816,7 @@ const DATA = {
         "العلوم البيئية": [],
         "الجغرافيا": []
       },
-      "الملخصات": {
+      "الاختبارات النهائية": {
         "التربية الإسلامية": [],
         "اللغة العربية": [],
         "هذا وطني": [],
@@ -801,18 +844,21 @@ const DATA = {
       }
     },
     "الفصل الدراسي الثاني": {
-      "الاختبارات النهائية": { "التربية الإسلامية":[],"اللغة العربية":[],"هذا وطني":[],"اللغة الإنجليزية":[],"رياضيات متقدمة":[{"name":"اختبارات رياضيات متقدمة","url":"https://anasalasy-elmanoufy.github.io/elmanoufy/اختبارات رياضيات متقدم.pdf","type":"pdf"},{"name":"اختبارات نهائية رياضيات متقدمة","url":"https://anasalasy-elmanoufy.github.io/elmanoufy/اختبارات نهائية رياضيات متقدمة.pdf","type":"pdf"}],"رياضيات أساسية":[],"أحياء":[],"فيزياء":[{"name":"اختبارات فيزياء","url":"https://anasalasy-elmanoufy.github.io/elmanoufy/اختبارات فيزياء.pdf","type":"pdf"}],"كيمياء":[{"name":"اختبارات كيمياء","url":"https://anasalasy-elmanoufy.github.io/elmanoufy/اختبارات كيمياء.pdf","type":"pdf"}],"العلوم البيئية":[],"الجغرافيا":[] },
-      "الملخصات":            { "التربية الإسلامية":[],"اللغة العربية":[],"هذا وطني":[],"اللغة الإنجليزية":[],"رياضيات متقدمة":[],"رياضيات أساسية":[],"أحياء":[{"name":"ملخص أحياء","url":"https://anasalasy-elmanoufy.github.io/elmanoufy/ملخص أحياء.pdf","type":"pdf"}],"فيزياء":[],"كيمياء":[],"العلوم البيئية":[],"الجغرافيا":[] },
+      "دليل المعلم": { "التربية الإسلامية":[],"اللغة العربية":[],"هذا وطني":[],"اللغة الإنجليزية":[],"رياضيات متقدمة":[],"رياضيات أساسية":[],"أحياء":[],"فيزياء":[],"كيمياء":[],"العلوم البيئية":[],"الجغرافيا":[] },
+      "الاختبارات النهائية": { "التربية الإسلامية":[],"اللغة العربية":[],"هذا وطني":[],"اللغة الإنجليزية":[],"رياضيات متقدمة":[{"name":"اختبارات رياضيات متقدمة","url":"https://anasalasy-elmanoufy.github.io/elmanoufy/%D8%A7%D8%AE%D8%AA%D8%A8%D8%A7%D8%B1%D8%A7%D8%AA%20%D8%B1%D9%8A%D8%A7%D8%B6%D9%8A%D8%A7%D8%AA%20%D9%85%D8%AA%D9%82%D8%AF%D9%85.pdf","type":"pdf"},{"name":"اختبارات نهائية رياضيات متقدمة","url":"https://anasalasy-elmanoufy.github.io/elmanoufy/%D8%A7%D8%AE%D8%AA%D8%A8%D8%A7%D8%B1%D8%A7%D8%AA%20%D9%86%D9%87%D8%A7%D8%A6%D9%8A%D8%A9%20%D8%B1%D9%8A%D8%A7%D8%B6%D9%8A%D8%A7%D8%AA%20%D9%85%D8%AA%D9%82%D8%AF%D9%85%D8%A9.pdf","type":"pdf"}],"رياضيات أساسية":[],"أحياء":[],"فيزياء":[{"name":"اختبارات فيزياء","url":"https://anasalasy-elmanoufy.github.io/elmanoufy/%D8%A7%D8%AE%D8%AA%D8%A8%D8%A7%D8%B1%D8%A7%D8%AA%20%D9%81%D9%8A%D8%B2%D9%8A%D8%A7%D8%A1.pdf","type":"pdf"}],"كيمياء":[{"name":"اختبارات كيمياء","url":"https://anasalasy-elmanoufy.github.io/elmanoufy/%D8%A7%D8%AE%D8%AA%D8%A8%D8%A7%D8%B1%D8%A7%D8%AA%20%D9%83%D9%8A%D9%85%D9%8A%D8%A7%D8%A1.pdf","type":"pdf"}],"العلوم البيئية":[],"الجغرافيا":[] },
+      "الملخصات":            { "التربية الإسلامية":[],"اللغة العربية":[],"هذا وطني":[],"اللغة الإنجليزية":[],"رياضيات متقدمة":[],"رياضيات أساسية":[],"أحياء":[{"name":"ملخص الأحياء","url":"https://anasalasy-elmanoufy.github.io/elmanoufy/%D9%85%D9%84%D8%AE%D8%B5%20%D8%A3%D8%AD%D9%8A%D8%A7%D8%A1.pdf","type":"pdf"}],"فيزياء":[],"كيمياء":[],"العلوم البيئية":[],"الجغرافيا":[] },
       "الملفات المهمة":      { "التربية الإسلامية":[],"اللغة العربية":[],"هذا وطني":[],"اللغة الإنجليزية":[],"رياضيات متقدمة":[],"رياضيات أساسية":[],"أحياء":[],"فيزياء":[],"كيمياء":[],"العلوم البيئية":[],"الجغرافيا":[] }
     }
   },
   "الثاني عشر": {
     "الفصل الدراسي الأول": {
+      "دليل المعلم": { "التربية الإسلامية":[],"اللغة العربية":[],"هذا وطني":[],"اللغة الإنجليزية":[],"رياضيات متقدمة":[],"رياضيات أساسية":[],"أحياء":[],"فيزياء":[],"كيمياء":[],"العلوم البيئية":[],"الجغرافيا":[] },
       "الاختبارات النهائية": { "التربية الإسلامية":[],"اللغة العربية":[],"هذا وطني":[],"اللغة الإنجليزية":[],"رياضيات متقدمة":[],"رياضيات أساسية":[],"أحياء":[],"فيزياء":[],"كيمياء":[],"العلوم البيئية":[],"الجغرافيا":[] },
       "الملخصات":            { "التربية الإسلامية":[],"اللغة العربية":[],"هذا وطني":[],"اللغة الإنجليزية":[],"رياضيات متقدمة":[],"رياضيات أساسية":[],"أحياء":[],"فيزياء":[],"كيمياء":[],"العلوم البيئية":[],"الجغرافيا":[] },
       "الملفات المهمة":      { "التربية الإسلامية":[],"اللغة العربية":[],"هذا وطني":[],"اللغة الإنجليزية":[],"رياضيات متقدمة":[],"رياضيات أساسية":[],"أحياء":[],"فيزياء":[],"كيمياء":[],"العلوم البيئية":[],"الجغرافيا":[] }
     },
     "الفصل الدراسي الثاني": {
+      "دليل المعلم": { "التربية الإسلامية":[],"اللغة العربية":[],"هذا وطني":[],"اللغة الإنجليزية":[],"رياضيات متقدمة":[],"رياضيات أساسية":[],"أحياء":[],"فيزياء":[],"كيمياء":[],"العلوم البيئية":[],"الجغرافيا":[] },
       "الاختبارات النهائية": { "التربية الإسلامية":[],"اللغة العربية":[],"هذا وطني":[],"اللغة الإنجليزية":[],"رياضيات متقدمة":[],"رياضيات أساسية":[],"أحياء":[],"فيزياء":[],"كيمياء":[],"العلوم البيئية":[],"الجغرافيا":[] },
       "الملخصات":            { "التربية الإسلامية":[],"اللغة العربية":[],"هذا وطني":[],"اللغة الإنجليزية":[],"رياضيات متقدمة":[],"رياضيات أساسية":[],"أحياء":[],"فيزياء":[],"كيمياء":[],"العلوم البيئية":[],"الجغرافيا":[] },
       "الملفات المهمة":      { "التربية الإسلامية":[],"اللغة العربية":[],"هذا وطني":[],"اللغة الإنجليزية":[],"رياضيات متقدمة":[],"رياضيات أساسية":[],"أحياء":[],"فيزياء":[],"كيمياء":[],"العلوم البيئية":[],"الجغرافيا":[] }
@@ -820,7 +866,7 @@ const DATA = {
   }
 };
 
-const SUBJECTS = [
+const SUBJECTS_11_12 = [
   { name:"التربية الإسلامية", icon:"🕌", color:"c-green"  },
   { name:"اللغة العربية",     icon:"📖", color:"c-red"    },
   { name:"هذا وطني",          icon:"🏛️", color:"c-orange" },
@@ -833,6 +879,21 @@ const SUBJECTS = [
   { name:"العلوم البيئية",    icon:"🌿", color:"c-green"  },
   { name:"الجغرافيا",         icon:"🗺️", color:"c-rose"   },
 ];
+
+const SUBJECTS_10 = [
+  { name:"فيزياء",                icon:"⚛️", color:"c-sky"    },
+  { name:"كيمياء",                icon:"🧪", color:"c-teal"   },
+  { name:"أحياء",                 icon:"🧬", color:"c-lime"   },
+  { name:"التربية الإسلامية",     icon:"🕌", color:"c-green"  },
+  { name:"الدراسات الاجتماعية",   icon:"🏛️", color:"c-orange" },
+  { name:"اللغة الإنجليزية",      icon:"🌍", color:"c-blue"   },
+  { name:"اللغة العربية",         icon:"📖", color:"c-red"    },
+  { name:"رياضيات",               icon:"📐", color:"c-purple" },
+];
+
+function getSubjects(){ return S.grade==='العاشر' ? SUBJECTS_10 : SUBJECTS_11_12; }
+
+const SUBJECTS = SUBJECTS_11_12; // للتوافق مع الكود القديم
 
 const STEPS = [];
 
@@ -887,13 +948,19 @@ function renderGrades(c){
   c.innerHTML=`
     <div class="section-title">🎓 اختر صفك الدراسي</div>
     <div class="cards-grid two-col">
-      <div class="card c-red d1" onclick="pick('grade','الحادي عشر')">
+      <div class="card c-teal d1" onclick="pick('grade','العاشر')">
+        <span class="card-icon">1️⃣0️⃣</span>
+        <h3>العاشر</h3>
+        <p>الصف العاشر — جميع الفصول والمواد</p>
+        <span class="chip">اختر ←</span>
+      </div>
+      <div class="card c-red d2" onclick="pick('grade','الحادي عشر')">
         <span class="card-icon">1️⃣1️⃣</span>
         <h3>الحادي عشر</h3>
         <p>الصف الحادي عشر — جميع الفصول والمواد</p>
         <span class="chip">اختر ←</span>
       </div>
-      <div class="card c-orange d2" onclick="pick('grade','الثاني عشر')">
+      <div class="card c-orange d3" onclick="pick('grade','الثاني عشر')">
         <span class="card-icon">1️⃣2️⃣</span>
         <h3>الثاني عشر</h3>
         <p>الصف الثاني عشر — جميع الفصول والمواد</p>
@@ -927,19 +994,25 @@ function renderTypes(c){
     <button class="back-btn" onclick="goBack('grade')">→ رجوع</button>
     <div class="section-title">📂 اختر نوع الملفات</div>
     <div class="cards-grid">
-      <div class="card c-red d1" onclick="pick('type','الاختبارات النهائية')">
+      <div class="card c-green d1" onclick="pick('type','دليل المعلم')">
+        <span class="card-icon">👨‍🏫</span>
+        <h3>دليل المعلم</h3>
+        <p>الأدلة والمراجع الرسمية للمعلمين</p>
+        <span class="chip">اختر ←</span>
+      </div>
+      <div class="card c-red d2" onclick="pick('type','الاختبارات النهائية')">
         <span class="card-icon">📝</span>
         <h3>الاختبارات النهائية</h3>
         <p>اختبارات نهاية الفصل والسنوات السابقة</p>
         <span class="chip">اختر ←</span>
       </div>
-      <div class="card c-orange d2" onclick="pick('type','الملخصات')">
+      <div class="card c-orange d3" onclick="pick('type','الملخصات')">
         <span class="card-icon">📋</span>
         <h3>الملخصات</h3>
         <p>ملخصات شاملة لجميع المواد الدراسية</p>
         <span class="chip">اختر ←</span>
       </div>
-      <div class="card c-purple d3" onclick="pick('type','الملفات المهمة')">
+      <div class="card c-purple d4" onclick="pick('type','الملفات المهمة')">
         <span class="card-icon">⭐</span>
         <h3>الملفات المهمة</h3>
         <p>مذكرات ومراجع وفيديوهات مفيدة</p>
@@ -949,9 +1022,10 @@ function renderTypes(c){
 }
 
 function renderSubjects(c){
+  const subs=getSubjects();
   const delays=['d1','d2','d3','d4','d5','d6','d7','d8','d9','d10','d11'];
-  const cards=SUBJECTS.map((sub,i)=>`
-    <div class="card ${sub.color} ${delays[i]}" onclick="pick('subject','${sub.name}')">
+  const cards=subs.map((sub,i)=>`
+    <div class="card ${sub.color} ${delays[i]||'d1'}" onclick="pick('subject','${sub.name}')">
       <span class="card-icon">${sub.icon}</span>
       <h3>${sub.name}</h3>
       <span class="chip">اختر ←</span>
@@ -964,7 +1038,8 @@ function renderSubjects(c){
 
 function renderFiles(c){
   const files=DATA[S.grade]?.[S.semester]?.[S.type]?.[S.subject]||[];
-  const sub=SUBJECTS.find(s=>s.name===S.subject);
+  const subs=getSubjects();
+  const sub=subs.find(s=>s.name===S.subject);
   const icon=sub?sub.icon:'📚';
   let h=`<button class="back-btn" onclick="goBack('type')">→ رجوع</button>`;
   h+=`<div class="section-title">${icon} ${S.subject} — ${S.type}</div>`;
@@ -1102,34 +1177,10 @@ function doSearch(q){
 }
 function closeSearch(){ document.getElementById('searchResults').classList.remove('open'); }
 
-// PROGRESS
-function updateProgress(){
-  const ps=document.getElementById('progressSection');
-  if(!ps) return;
-  const all=getAllFiles();
-  const total=all.length;
-  if(!total){ ps.style.display='none'; return; }
-  const opened=all.filter((_,i)=>Object.keys(localStorage).some(k=>k.startsWith('opens_')&&parseInt(localStorage[k])>0&&k.includes(all[i]?.name?.substring(0,5)||''))).length;
-  const pct=total>0?Math.round((opened/total)*100):0;
-  ps.innerHTML=`
-    <div class="progress-header">
-      <span class="progress-title">📈 تقدمك في المنصة</span>
-      <span class="progress-pct">${pct}%</span>
-    </div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:${pct}%"></div></div>
-    <div class="progress-stats">
-      <span class="p-stat">إجمالي الملفات: <span>${total}</span></span>
-      <span class="p-stat">تم فتحها: <span>${opened}</span></span>
-      <span class="p-stat">متبقي: <span>${total-opened}</span></span>
-    </div>`;
-}
-updateProgress();
-
 // TRACK FILE OPEN
 function trackOpen(rkey){
   const k='opens_'+rkey;
   localStorage.setItem(k,(parseInt(localStorage.getItem(k)||'0')+1).toString());
-  updateProgress();
 }
 
 // STAR RATING
@@ -1220,13 +1271,22 @@ function updateBermudaCard(i){
 function playDone(){
   try {
     const ctx2=new (window.AudioContext||window.webkitAudioContext)();
-    [523,659,784,1047].forEach((f,i)=>{
-      const o=ctx2.createOscillator(),g=ctx2.createGain();
-      o.connect(g);g.connect(ctx2.destination);
-      o.type='sine';o.frequency.value=f;
-      g.gain.setValueAtTime(0.2,ctx2.currentTime+i*.15);
-      g.gain.exponentialRampToValueAtTime(0.001,ctx2.currentTime+i*.15+.4);
-      o.start(ctx2.currentTime+i*.15);o.stop(ctx2.currentTime+i*.15+.5);
+    // نغمة موسيقية جميلة: سلم صاعد ثم هبوط
+    const notes=[523,659,784,1047,784,1047,1319];
+    const delays=[0,.12,.24,.36,.55,.68,.82];
+    notes.forEach((f,i)=>{
+      const o=ctx2.createOscillator();
+      const g=ctx2.createGain();
+      const reverb=ctx2.createGain();
+      o.connect(g); g.connect(reverb); reverb.connect(ctx2.destination);
+      o.type= i<4 ? 'sine' : 'triangle';
+      o.frequency.value=f;
+      const t=ctx2.currentTime+delays[i];
+      g.gain.setValueAtTime(0,t);
+      g.gain.linearRampToValueAtTime(0.22,t+0.03);
+      g.gain.exponentialRampToValueAtTime(0.001,t+0.45);
+      reverb.gain.setValueAtTime(0.7,t);
+      o.start(t); o.stop(t+0.5);
     });
   } catch(e){}
 }
@@ -1281,29 +1341,51 @@ function updateClock(){
 }
 setInterval(updateClock,1000); updateClock();
 
-// PRAYER TIMES - Muscat approximate
+// PRAYER TIMES - نظام 12 ساعة
 (function(){
   const el=document.getElementById('prayerTimes');
   if(!el) return;
   const now=new Date();
   const times=[
     {name:'الفجر',h:4,m:30},{name:'الشروق',h:5,m:55},
-    {name:'الظهر',h:12,m:5},{name:'العصر',h:15,m:30},
-    {name:'المغرب',h:18,m:20},{name:'العشاء',h:19,m:45}
+    {name:'الظهر',h:12,m:5},{name:'العصر',h:3,m:30,pm:true},
+    {name:'المغرب',h:6,m:20,pm:true},{name:'العشاء',h:7,m:45,pm:true}
+  ];
+  // original 24h for comparison
+  const times24=[
+    {h:4,m:30},{h:5,m:55},{h:12,m:5},{h:15,m:30},{h:18,m:20},{h:19,m:45}
   ];
   const nowMins=now.getHours()*60+now.getMinutes();
-  let nextIdx=times.findIndex(t=>t.h*60+t.m>nowMins);
+  let nextIdx=times24.findIndex(t=>t.h*60+t.m>nowMins);
   if(nextIdx===-1) nextIdx=0;
   el.innerHTML=times.map((t,i)=>{
-    const timeStr=`${String(t.h).padStart(2,'0')}:${String(t.m).padStart(2,'0')}`;
+    const hh=String(t.h).padStart(2,'0');
+    const mm=String(t.m).padStart(2,'0');
+    const ampm=t.pm?'م':'ص';
+    const timeStr=`${hh}:${mm} ${ampm}`;
     const isNext=i===nextIdx;
     return `<div class="time-card ${isNext?'next':''}">
       <div class="time-name">${t.name}</div>
-      <div class="time-val">${timeStr}</div>
+      <div class="time-val" style="font-size:18px">${timeStr}</div>
       ${isNext?'<div class="time-badge">⏳ القادمة</div>':''}
     </div>`;
   }).join('');
 })();
+
+// STAT INFO
+function showStatInfo(title, text){
+  const box=document.getElementById('statInfoBox');
+  document.getElementById('statInfoTitle').textContent=title;
+  document.getElementById('statInfoText').textContent=text;
+  box.style.display='block';
+}
+
+// DEVELOPER INFO
+function openDeveloperInfo(){
+  playClick();
+  closeModal('aboutModal');
+  setTimeout(()=>{ document.getElementById('devModal').classList.add('open'); },200);
+}
 
 function openAI(){ playClick(); document.getElementById('aiModal').classList.add('open'); document.getElementById('aiInput').focus(); }
 function closeAI(){ document.getElementById('aiModal').classList.remove('open'); }
@@ -1322,11 +1404,16 @@ async function sendAI(){
   try {
     const res = await fetch('https://api.anthropic.com/v1/messages', {
       method:'POST',
-      headers:{'Content-Type':'application/json'},
+      headers:{
+        'Content-Type':'application/json',
+        'x-api-key': window.ANTHROPIC_API_KEY || '',
+        'anthropic-version':'2023-06-01',
+        'anthropic-dangerous-direct-browser-access':'true'
+      },
       body: JSON.stringify({
         model:'claude-sonnet-4-20250514',
         max_tokens:1000,
-        system:'أنت معلم ذكي متخصص في المواد الدراسية للمرحلة الثانوية. تجيب بالعربية بأسلوب واضح ومبسط ومشجع. اجعل إجاباتك مختصرة ومفيدة.',
+        system:'أنت معلم ذكي متخصص في المواد الدراسية للمرحلة الثانوية في مصر وسلطنة عُمان. تجيب بالعربية بأسلوب واضح ومبسط ومشجع. اجعل إجاباتك مختصرة ومفيدة.',
         messages:[{role:'user',content:msg}]
       })
     });
