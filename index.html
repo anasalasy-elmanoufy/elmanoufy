@@ -331,9 +331,331 @@ body {
 .ai-input:focus{border-color:rgba(251,191,36,.6)}
 .ai-send{background:linear-gradient(135deg,#fbbf24,#10b981);border:none;border-radius:12px;padding:12px 18px;color:#000;font-family:'Cairo',sans-serif;font-weight:800;cursor:pointer;transition:transform .2s;white-space:nowrap;}
 .ai-send:hover{transform:scale(1.05)}
+
+/* LIGHT MODE */
+body.light { background:linear-gradient(180deg,#f0f4ff,#e8edf8); color:#1a2035; }
+body.light .bg-blobs { opacity:.04; }
+
+body.light .header .badge { background:rgba(0,0,0,.06); border-color:rgba(0,0,0,.1); color:#475569; }
+body.light .header h1 { background:linear-gradient(135deg,#1a2035 0%,#d97706 40%,#059669 80%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+body.light .header .subtitle { color:#64748b; }
+body.light .header .subtitle::before { background:linear-gradient(to left,transparent,rgba(0,0,0,.15)); }
+body.light .header .subtitle::after { background:linear-gradient(to right,transparent,rgba(0,0,0,.15)); }
+
+body.light .breadcrumb { background:rgba(255,255,255,.9); border-color:rgba(0,0,0,.1); color:#475569; }
+body.light .crumb { color:#475569; }
+body.light .crumb.active { color:#d97706; }
+
+body.light .card { background:rgba(255,255,255,.95); border-color:rgba(0,0,0,.1); color:#1a2035; box-shadow:0 4px 20px rgba(0,0,0,.08); }
+body.light .card p { color:#64748b; }
+body.light .card h3 { color:#1a2035; }
+body.light .chip { background:rgba(0,0,0,.06); color:#475569; border-color:rgba(0,0,0,.1); }
+body.light .card:hover { border-color:rgba(217,119,6,.4); }
+
+body.light .section-title { color:#1a2035; }
+body.light .section-title::after { background:linear-gradient(to left,transparent,rgba(0,0,0,.1)); }
+
+body.light .file-item { background:rgba(255,255,255,.95); border-color:rgba(0,0,0,.1); color:#1a2035; }
+body.light .fi-name { color:#1a2035; }
+body.light .fi-meta { color:#64748b; }
+body.light .file-item:hover { border-color:rgba(217,119,6,.4); background:rgba(251,191,36,.05); }
+
+body.light .back-btn { background:rgba(255,255,255,.9); color:#475569; border-color:rgba(0,0,0,.12); }
+body.light .back-btn:hover { background:#fff; color:#1a2035; border-color:rgba(217,119,6,.4); }
+
+body.light .progress-section { background:rgba(255,255,255,.9); border-color:rgba(0,0,0,.1); }
+body.light .progress-title { color:#64748b; }
+body.light .p-stat { color:#64748b; }
+body.light .p-stat span { color:#1a2035; }
+body.light .progress-bar-bg { background:rgba(0,0,0,.1); }
+
+body.light .search-input { background:rgba(255,255,255,.95); color:#1a2035; border-color:rgba(0,0,0,.12); }
+body.light .search-input::placeholder { color:#94a3b8; }
+body.light .search-results { background:linear-gradient(180deg,#fff,#f8faff); border-color:rgba(217,119,6,.2); }
+body.light .search-result-item { color:#1a2035; border-bottom-color:rgba(0,0,0,.06); }
+body.light .search-result-item:hover { background:rgba(251,191,36,.08); }
+body.light .sri-path { color:#64748b; }
+body.light .search-empty { color:#64748b; }
+
+body.light .ai-box { background:linear-gradient(180deg,#fff,#f8faff); border-color:rgba(217,119,6,.3); color:#1a2035; }
+body.light .ai-header h3 { background:linear-gradient(135deg,#d97706,#059669); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+body.light .ai-close { background:rgba(0,0,0,.08); color:#475569; }
+body.light .ai-msg.bot { background:rgba(217,119,6,.08); border-color:rgba(217,119,6,.2); color:#1a2035; }
+body.light .ai-msg.user { background:rgba(5,150,105,.08); border-color:rgba(5,150,105,.2); color:#1a2035; }
+body.light .ai-input { background:rgba(0,0,0,.04); color:#1a2035; border-color:rgba(217,119,6,.2); }
+
+body.light .modal-box { background:linear-gradient(180deg,#fff,#f0f4ff); color:#1a2035; border-color:rgba(217,119,6,.2); }
+body.light .modal-header h2 { background:linear-gradient(135deg,#d97706,#059669); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+body.light .modal-close { background:rgba(0,0,0,.06); color:#475569; }
+body.light .stat-card { background:rgba(217,119,6,.06); border-color:rgba(217,119,6,.15); }
+body.light .stat-label { color:#64748b; }
+body.light .creator-card { background:rgba(5,150,105,.06); border-color:rgba(5,150,105,.2); }
+
+body.light .fb-input, body.light .fb-textarea { background:rgba(0,0,0,.04); color:#1a2035; border-color:rgba(217,119,6,.2); }
+body.light .fb-input::placeholder, body.light .fb-textarea::placeholder { color:#94a3b8; }
+
+body.light .time-card { background:rgba(139,92,246,.06); border-color:rgba(139,92,246,.15); }
+body.light .time-name { color:#64748b; }
+body.light .time-val { color:#1a2035; }
+body.light .clock-live { background:linear-gradient(135deg,#d97706,#059669); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+
+body.light .nav-btn { background:rgba(255,255,255,.9); border-color:rgba(0,0,0,.12); color:#1a2035; }
+body.light .nav-btn:hover { background:#fff; border-color:rgba(217,119,6,.4); }
+
+body.light .empty { border-color:rgba(0,0,0,.1); background:rgba(255,255,255,.5); }
+body.light .empty h3 { color:#1a2035; }
+body.light .empty p { color:#64748b; }
+
+body.light .toast { background:linear-gradient(135deg,#fff,#f8faff); color:#1a2035; border-color:rgba(217,119,6,.3); }
+
+body.light .theme-toggle { background:rgba(0,0,0,.08); border-color:rgba(0,0,0,.15); }
+
+/* THEME TOGGLE */
+.theme-toggle {
+  position:fixed; top:20px; left:20px; z-index:1000;
+  width:52px; height:28px; background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.2); border-radius:999px;
+  cursor:pointer; transition:.3s; display:flex; align-items:center; padding:3px;
+}
+.theme-toggle .toggle-ball {
+  width:22px; height:22px; border-radius:50%;
+  background:linear-gradient(135deg,#fbbf24,#f59e0b);
+  transition:.3s cubic-bezier(.34,1.56,.64,1);
+  display:flex; align-items:center; justify-content:center; font-size:12px;
+  transform:translateX(0);
+}
+body.light .theme-toggle .toggle-ball { transform:translateX(24px); background:linear-gradient(135deg,#60a5fa,#3b82f6); }
+
+/* NAV BUTTONS */
+.nav-actions { position:fixed; top:20px; right:20px; z-index:1000; display:flex; gap:8px; }
+.nav-btn {
+  background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.12);
+  border-radius:12px; padding:8px 14px; color:var(--text);
+  font-family:'Cairo',sans-serif; font-size:13px; font-weight:700;
+  cursor:pointer; transition:.2s; backdrop-filter:blur(10px);
+}
+.nav-btn:hover { background:rgba(251,191,36,.15); border-color:rgba(251,191,36,.3); }
+
+/* MODALS */
+.modal-overlay { position:fixed; inset:0; z-index:3000; background:rgba(0,0,0,.8); backdrop-filter:blur(12px); display:none; align-items:center; justify-content:center; padding:20px; }
+.modal-overlay.open { display:flex; }
+.modal-box { width:100%; max-width:580px; max-height:88vh; overflow-y:auto; background:linear-gradient(180deg,#0d1117,#030712); border:1px solid rgba(251,191,36,.2); border-radius:24px; padding:28px; animation:fadeUp .4s ease; }
+.modal-header { display:flex; align-items:center; gap:12px; margin-bottom:22px; }
+.modal-header h2 { font-size:22px; font-weight:900; flex:1; background:linear-gradient(135deg,#fbbf24,#10b981); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+.modal-close { background:rgba(255,255,255,.08); border:none; color:inherit; border-radius:8px; width:34px; height:34px; cursor:pointer; font-size:18px; flex-shrink:0; }
+
+/* ABOUT STATS */
+.stat-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin:20px 0; }
+.stat-card { background:rgba(251,191,36,.08); border:1px solid rgba(251,191,36,.15); border-radius:16px; padding:16px; text-align:center; }
+.stat-num { font-size:28px; font-weight:900; background:linear-gradient(135deg,#fbbf24,#10b981); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+.stat-label { font-size:12px; color:var(--muted); margin-top:4px; }
+.creator-card { background:rgba(16,185,129,.08); border:1px solid rgba(16,185,129,.2); border-radius:16px; padding:20px; display:flex; align-items:center; gap:16px; margin:16px 0; }
+.creator-avatar { width:64px; height:64px; border-radius:50%; background:linear-gradient(135deg,#fbbf24,#10b981); display:flex; align-items:center; justify-content:center; font-size:30px; flex-shrink:0; }
+
+/* FEEDBACK FORM */
+.feedback-form { display:flex; flex-direction:column; gap:14px; }
+.fb-input, .fb-textarea { background:rgba(255,255,255,.06); border:1px solid rgba(251,191,36,.2); border-radius:12px; padding:12px 16px; color:inherit; font-family:'Cairo',sans-serif; font-size:14px; outline:none; transition:.2s; width:100%; }
+.fb-textarea { min-height:100px; resize:vertical; }
+.fb-input:focus, .fb-textarea:focus { border-color:rgba(251,191,36,.6); }
+.fb-btn { background:linear-gradient(135deg,#fbbf24,#10b981); border:none; border-radius:12px; padding:14px; color:#000; font-family:'Cairo',sans-serif; font-weight:800; font-size:15px; cursor:pointer; transition:.2s; }
+.fb-btn:hover { transform:scale(1.02); }
+
+/* TIMES */
+.times-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(130px,1fr)); gap:10px; margin-top:16px; }
+.time-card { background:rgba(139,92,246,.08); border:1px solid rgba(139,92,246,.2); border-radius:14px; padding:14px; text-align:center; transition:.3s; }
+.time-card.next { background:rgba(251,191,36,.12); border-color:rgba(251,191,36,.4); }
+.time-name { font-size:12px; color:var(--muted); margin-bottom:6px; }
+.time-val { font-size:22px; font-weight:900; direction:ltr; }
+.time-badge { font-size:10px; margin-top:4px; color:#fbbf24; font-weight:700; }
+
+/* BERMUDA TIMERS */
+.bermuda-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:12px; }
+.bermuda-card {
+  background:linear-gradient(135deg,rgba(139,92,246,.1),rgba(251,191,36,.08));
+  border:1px solid rgba(139,92,246,.25); border-radius:16px; padding:16px;
+  text-align:center; transition:.3s;
+}
+.bermuda-card:hover { border-color:rgba(251,191,36,.4); transform:translateY(-2px); }
+.bermuda-card.running { border-color:rgba(16,185,129,.4); background:linear-gradient(135deg,rgba(16,185,129,.1),rgba(251,191,36,.08)); }
+.bermuda-card.done { border-color:rgba(251,191,36,.6); background:linear-gradient(135deg,rgba(251,191,36,.15),rgba(251,191,36,.05)); animation:donePulse .5s ease 3; }
+@keyframes donePulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.04)} }
+.bermuda-name { font-size:12px; color:var(--muted); margin-bottom:8px; font-weight:700; }
+.bermuda-time { font-size:26px; font-weight:900; direction:ltr; letter-spacing:1px; }
+.bermuda-time.running { color:#10b981; }
+.bermuda-time.done { color:#fbbf24; }
+.bermuda-btns { display:flex; gap:6px; margin-top:10px; justify-content:center; }
+.b-btn {
+  background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.12);
+  border-radius:8px; padding:5px 10px; color:var(--text);
+  font-family:'Cairo',sans-serif; font-size:11px; font-weight:700;
+  cursor:pointer; transition:.2s;
+}
+.b-btn:hover { background:rgba(251,191,36,.15); border-color:rgba(251,191,36,.3); }
+body.light .bermuda-card { background:linear-gradient(135deg,rgba(139,92,246,.06),rgba(251,191,36,.05)); border-color:rgba(139,92,246,.2); }
+body.light .bermuda-name { color:#64748b; }
+body.light .b-btn { background:rgba(0,0,0,.05); border-color:rgba(0,0,0,.1); color:#1a2035; }
+.clock-live { font-size:42px; font-weight:900; text-align:center; direction:ltr; background:linear-gradient(135deg,#fbbf24,#10b981); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; margin:16px 0; letter-spacing:2px; }
+
+/* SEARCH BAR */
+.search-wrap {
+  position:relative; margin-bottom:28px;
+  animation:fadeDown .5s .2s ease both;
+}
+.search-input {
+  width:100%; padding:14px 50px 14px 20px;
+  background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.1);
+  border-radius:16px; color:var(--text); font-family:'Cairo',sans-serif;
+  font-size:15px; outline:none; transition:.3s;
+  backdrop-filter:blur(10px);
+}
+.search-input:focus { border-color:rgba(251,191,36,.5); background:rgba(255,255,255,.09); box-shadow:0 0 0 3px rgba(251,191,36,.1); }
+.search-input::placeholder { color:var(--muted); }
+.search-icon { position:absolute; left:16px; top:50%; transform:translateY(-50%); font-size:18px; pointer-events:none; }
+.search-results {
+  position:absolute; top:calc(100% + 8px); right:0; left:0; z-index:100;
+  background:linear-gradient(180deg,#0d1117,#030712);
+  border:1px solid rgba(251,191,36,.2); border-radius:16px;
+  overflow:hidden; display:none;
+  box-shadow:0 20px 60px rgba(0,0,0,.5);
+}
+.search-results.open { display:block; }
+.search-result-item {
+  display:flex; align-items:center; gap:12px; padding:13px 18px;
+  cursor:pointer; transition:.2s; border-bottom:1px solid rgba(255,255,255,.05);
+  text-decoration:none; color:var(--text);
+}
+.search-result-item:hover { background:rgba(251,191,36,.08); }
+.search-result-item:last-child { border-bottom:none; }
+.sri-icon { font-size:22px; flex-shrink:0; }
+.sri-info { flex:1; }
+.sri-name { font-size:14px; font-weight:700; }
+.sri-path { font-size:11px; color:var(--muted); margin-top:2px; }
+.search-empty { padding:24px; text-align:center; color:var(--muted); font-size:14px; }
+body.light .search-input { background:rgba(255,255,255,.8); color:#1e293b; border-color:rgba(0,0,0,.1); }
+body.light .search-results { background:linear-gradient(180deg,#fff,#f8faff); }
+body.light .search-result-item { color:#1e293b; }
+
+/* PROGRESS BAR */
+.progress-section {
+  margin-bottom:28px;
+  background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08);
+  border-radius:18px; padding:18px 22px;
+  animation:fadeUp .5s .1s ease both;
+}
+body.light .progress-section { background:rgba(255,255,255,.8); border-color:rgba(0,0,0,.08); }
+.progress-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; }
+.progress-title { font-size:14px; font-weight:700; color:var(--muted); }
+.progress-pct { font-size:16px; font-weight:900; background:linear-gradient(135deg,#fbbf24,#10b981); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+.progress-bar-bg { height:8px; background:rgba(255,255,255,.08); border-radius:999px; overflow:hidden; }
+.progress-bar-fill { height:100%; background:linear-gradient(90deg,#fbbf24,#10b981); border-radius:999px; transition:width 1s cubic-bezier(.34,1.56,.64,1); }
+.progress-stats { display:flex; gap:16px; margin-top:12px; }
+.p-stat { font-size:12px; color:var(--muted); }
+.p-stat span { color:var(--text); font-weight:700; }
+
+/* STAR RATING */
+.rating-wrap { display:flex; align-items:center; gap:6px; margin-top:6px; }
+.stars-display { display:flex; gap:2px; }
+.star-btn { background:none; border:none; cursor:pointer; font-size:18px; transition:.2s; padding:0; line-height:1; filter:grayscale(1) opacity(.4); }
+.star-btn.active { filter:none; transform:scale(1.1); }
+.rating-count { font-size:11px; color:var(--muted); }
+
+/* TOAST NOTIFICATIONS */
+.toast-container { position:fixed; top:80px; left:50%; transform:translateX(-50%); z-index:9000; display:flex; flex-direction:column; gap:8px; pointer-events:none; }
+.toast {
+  background:linear-gradient(135deg,#0d1117,#1a2035);
+  border:1px solid rgba(251,191,36,.3); border-radius:14px;
+  padding:12px 20px; font-size:14px; font-weight:700;
+  display:flex; align-items:center; gap:10px;
+  box-shadow:0 8px 32px rgba(0,0,0,.4);
+  animation:toastIn .4s cubic-bezier(.34,1.56,.64,1) both;
+  pointer-events:auto; white-space:nowrap;
+}
+.toast.hide { animation:toastOut .3s ease forwards; }
+@keyframes toastIn { from{opacity:0;transform:translateY(-20px) scale(.9)} to{opacity:1;transform:none} }
+@keyframes toastOut { to{opacity:0;transform:translateY(-10px) scale(.95)} }
+body.light .toast { background:linear-gradient(135deg,#fff,#f0f4ff); color:#1e293b; }
+
 </style>
 </head>
 <body>
+
+<!-- TOAST CONTAINER -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- THEME TOGGLE -->
+<div class="theme-toggle" onclick="toggleTheme()"><div class="toggle-ball">🌙</div></div>
+
+<!-- NAV BUTTONS -->
+<div class="nav-actions">
+  <button class="nav-btn" onclick="openModal('aboutModal')">📊 عن المنصة</button>
+  <button class="nav-btn" onclick="openModal('feedbackModal')">💬 تعليق</button>
+  <button class="nav-btn" onclick="openModal('timesModal')">⏰ مؤقت</button>
+</div>
+
+<!-- ABOUT MODAL -->
+<div class="modal-overlay" id="aboutModal" onclick="closeModalOutside(event,'aboutModal')">
+  <div class="modal-box">
+    <div class="modal-header">
+      <span style="font-size:26px">📊</span>
+      <h2>عن منصة المنوفي</h2>
+      <button class="modal-close" onclick="closeModal('aboutModal')">✕</button>
+    </div>
+    <p style="color:var(--muted);font-size:14px;line-height:1.9;margin-bottom:16px">منصة تعليمية متكاملة تم تصميمها لمساعدة طلاب المرحلة الثانوية في الوصول إلى الملفات الدراسية والاستعداد للاختبارات بأفضل طريقة ممكنة.</p>
+    <div class="stat-grid">
+      <div class="stat-card"><div class="stat-num">+500</div><div class="stat-label">طالب مستفيد</div></div>
+      <div class="stat-card"><div class="stat-num">92%</div><div class="stat-label">نسبة النجاح</div></div>
+      <div class="stat-card"><div class="stat-num">+50</div><div class="stat-label">ملف دراسي</div></div>
+      <div class="stat-card"><div class="stat-num">+30</div><div class="stat-label">اختبار نهائي</div></div>
+      <div class="stat-card"><div class="stat-num">98%</div><div class="stat-label">رضا الطلاب</div></div>
+      <div class="stat-card"><div class="stat-num">24/7</div><div class="stat-label">متاح دائماً</div></div>
+    </div>
+    <div class="creator-card">
+      <div class="creator-avatar">👨‍💻</div>
+      <div>
+        <div style="font-size:17px;font-weight:800;margin-bottom:4px">أنس محمد العاصي</div>
+        <div style="font-size:13px;color:var(--muted);line-height:1.7">مؤسس ومطور منصة المنوفي التعليمية<br>منصة تهدف لرفع المستوى الأكاديمي</div>
+      </div>
+    </div>
+    <p style="font-size:13px;color:var(--muted);text-align:center;margin-top:8px">🏆 طلاب المنصة حققوا نسب نجاح تتجاوز 92% في الاختبارات النهائية</p>
+  </div>
+</div>
+
+<!-- FEEDBACK MODAL -->
+<div class="modal-overlay" id="feedbackModal" onclick="closeModalOutside(event,'feedbackModal')">
+  <div class="modal-box">
+    <div class="modal-header">
+      <span style="font-size:26px">💬</span>
+      <h2>أرسل تعليقك</h2>
+      <button class="modal-close" onclick="closeModal('feedbackModal')">✕</button>
+    </div>
+    <p style="color:var(--muted);font-size:14px;margin-bottom:20px">رأيك يهمنا! ساعدنا في تطوير المنصة</p>
+    <div class="feedback-form">
+      <input class="fb-input" id="fbName" placeholder="اسمك (اختياري)"/>
+      <input class="fb-input" id="fbEmail" placeholder="بريدك الإلكتروني (اختياري)"/>
+      <textarea class="fb-textarea" id="fbMsg" placeholder="اكتب تعليقك أو اقتراحك هنا..."></textarea>
+      <button class="fb-btn" onclick="sendFeedback()">إرسال التعليق 🚀</button>
+      <p id="fbStatus" style="text-align:center;font-size:13px;display:none"></p>
+    </div>
+  </div>
+</div>
+
+<!-- TIMES MODAL -->
+<div class="modal-overlay" id="timesModal" onclick="closeModalOutside(event,'timesModal')">
+  <div class="modal-box">
+    <div class="modal-header">
+      <span style="font-size:26px">⏰</span>
+      <h2>الوقت والمؤقتات</h2>
+      <button class="modal-close" onclick="closeModal('timesModal')">✕</button>
+    </div>
+    <div class="clock-live" id="liveClock">00:00:00</div>
+    <div style="font-size:13px;color:var(--muted);text-align:center;margin-bottom:20px">التوقيت الحالي</div>
+    <div style="font-size:15px;font-weight:800;margin-bottom:10px">🕌 أوقات الصلاة — مسقط</div>
+    <div class="times-grid" id="prayerTimes"></div>
+
+    <div style="font-size:15px;font-weight:800;margin:24px 0 12px">⏱️ مؤقتات برمودا</div>
+    <div class="bermuda-grid" id="bermudaGrid"></div>
+  </div>
+</div>
 
 <!-- SPLASH SCREEN - LUXURY -->
 <div id="splash">
@@ -413,6 +735,17 @@ body {
     <p class="subtitle">منصتك التعليمية المتكاملة</p>
   </div>
   <div class="breadcrumb" id="breadcrumb" style="display:none"></div>
+
+  <!-- SEARCH -->
+  <div class="search-wrap" id="searchWrap">
+    <span class="search-icon">🔍</span>
+    <input class="search-input" id="searchInput" placeholder="ابحث عن ملف، مادة، أو اختبار..." oninput="doSearch(this.value)" onfocus="doSearch(this.value)" onblur="setTimeout(()=>closeSearch(),200)"/>
+    <div class="search-results" id="searchResults"></div>
+  </div>
+
+  <!-- PROGRESS -->
+  <div class="progress-section" id="progressSection"></div>
+
   <div id="mainContent"></div>
 </div>
 
@@ -469,7 +802,7 @@ const DATA = {
     },
     "الفصل الدراسي الثاني": {
       "الاختبارات النهائية": { "التربية الإسلامية":[],"اللغة العربية":[],"هذا وطني":[],"اللغة الإنجليزية":[],"رياضيات متقدمة":[{"name":"اختبارات رياضيات متقدمة","url":"https://anasalasy-elmanoufy.github.io/elmanoufy/اختبارات رياضيات متقدم.pdf","type":"pdf"},{"name":"اختبارات نهائية رياضيات متقدمة","url":"https://anasalasy-elmanoufy.github.io/elmanoufy/اختبارات نهائية رياضيات متقدمة.pdf","type":"pdf"}],"رياضيات أساسية":[],"أحياء":[],"فيزياء":[{"name":"اختبارات فيزياء","url":"https://anasalasy-elmanoufy.github.io/elmanoufy/اختبارات فيزياء.pdf","type":"pdf"}],"كيمياء":[{"name":"اختبارات كيمياء","url":"https://anasalasy-elmanoufy.github.io/elmanoufy/اختبارات كيمياء.pdf","type":"pdf"}],"العلوم البيئية":[],"الجغرافيا":[] },
-      "الملخصات":            { "التربية الإسلامية":[],"اللغة العربية":[],"هذا وطني":[],"اللغة الإنجليزية":[],"رياضيات متقدمة":[],"رياضيات أساسية":[],"أحياء":[],"فيزياء":[],"كيمياء":[],"العلوم البيئية":[],"الجغرافيا":[] },
+      "الملخصات":            { "التربية الإسلامية":[],"اللغة العربية":[],"هذا وطني":[],"اللغة الإنجليزية":[],"رياضيات متقدمة":[],"رياضيات أساسية":[],"أحياء":[{"name":"ملخص أحياء","url":"https://anasalasy-elmanoufy.github.io/elmanoufy/ملخص أحياء.pdf","type":"pdf"}],"فيزياء":[],"كيمياء":[],"العلوم البيئية":[],"الجغرافيا":[] },
       "الملفات المهمة":      { "التربية الإسلامية":[],"اللغة العربية":[],"هذا وطني":[],"اللغة الإنجليزية":[],"رياضيات متقدمة":[],"رياضيات أساسية":[],"أحياء":[],"فيزياء":[],"كيمياء":[],"العلوم البيئية":[],"الجغرافيا":[] }
     }
   },
@@ -643,14 +976,22 @@ function renderFiles(c){
     </div>`;
   } else {
     h+=`<div class="files-list">`;
-    files.forEach(f=>{
+    files.forEach((f,fi)=>{
       const ico=f.type==='video'?'🎬':'📄';
       const meta=f.type==='video'?'فيديو تعليمي':'ملف PDF';
-      h+=`<a class="file-item" href="${f.url}" target="_blank">
+      const rkey=`rating_${S.grade}_${S.semester}_${S.type}_${S.subject}_${fi}`;
+      const savedRating=parseInt(localStorage.getItem(rkey)||'0');
+      const stars=[1,2,3,4,5].map(n=>`<button class="star-btn ${n<=savedRating?'active':''}" onclick="rateFile('${rkey}',${n},this)" data-val="${n}">⭐</button>`).join('');
+      const openCount=parseInt(localStorage.getItem('opens_'+rkey)||'0');
+      h+=`<a class="file-item" href="${f.url}" target="_blank" onclick="trackOpen('${rkey}')">
         <span class="fi">${ico}</span>
         <div class="fi-info">
           <div class="fi-name">${f.name}</div>
-          <div class="fi-meta">${meta}</div>
+          <div class="fi-meta">${meta} ${openCount>0?'• فُتح '+openCount+' مرة':''}</div>
+          <div class="rating-wrap" onclick="event.preventDefault();event.stopPropagation()">
+            <div class="stars-display">${stars}</div>
+            <span class="rating-count">${savedRating>0?savedRating+'/5':'قيّم الملف'}</span>
+          </div>
         </div>
         <button class="fi-btn">فتح ↗</button>
       </a>`;
@@ -711,7 +1052,259 @@ document.addEventListener('click',function(e){
   setTimeout(()=>r.remove(),600);
 });
 
-// AI TEACHER
+// TOAST
+function showToast(msg, emoji='✅', duration=3000){
+  const c=document.getElementById('toastContainer');
+  const t=document.createElement('div');
+  t.className='toast';
+  t.innerHTML=`<span>${emoji}</span><span>${msg}</span>`;
+  c.appendChild(t);
+  setTimeout(()=>{ t.classList.add('hide'); setTimeout(()=>t.remove(),300); },duration);
+}
+
+// NOTIFICATIONS on load
+setTimeout(()=>showToast('مرحباً بك في منصة المنوفي! 🎓','👋',4000),3500);
+setTimeout(()=>{
+  const newFiles=getAllFiles().length;
+  showToast(`يوجد ${newFiles} ملف متاح الآن 📚`,'📢',4000);
+},5500);
+
+// GET ALL FILES helper
+function getAllFiles(){
+  const all=[];
+  for(const grade in DATA) for(const sem in DATA[grade]) for(const type in DATA[grade][sem]) for(const sub in DATA[grade][sem][type]){
+    const files=DATA[grade][sem][type][sub];
+    files.forEach(f=>all.push({...f,grade,sem,type,sub}));
+  }
+  return all;
+}
+
+// SEARCH
+function doSearch(q){
+  const res=document.getElementById('searchResults');
+  q=q.trim();
+  if(!q){ res.classList.remove('open'); return; }
+  const all=getAllFiles();
+  const matched=all.filter(f=>f.name.includes(q)||f.sub.includes(q)||f.type.includes(q)||f.grade.includes(q));
+  if(!matched.length){
+    res.innerHTML=`<div class="search-empty">لا توجد نتائج لـ "${q}"</div>`;
+  } else {
+    res.innerHTML=matched.slice(0,8).map(f=>`
+      <a class="search-result-item" href="${f.url}" target="_blank">
+        <span class="sri-icon">${f.type==='video'?'🎬':'📄'}</span>
+        <div class="sri-info">
+          <div class="sri-name">${f.name}</div>
+          <div class="sri-path">${f.grade} ← ${f.sem} ← ${f.type} ← ${f.sub}</div>
+        </div>
+      </a>`).join('');
+  }
+  res.classList.add('open');
+}
+function closeSearch(){ document.getElementById('searchResults').classList.remove('open'); }
+
+// PROGRESS
+function updateProgress(){
+  const ps=document.getElementById('progressSection');
+  if(!ps) return;
+  const all=getAllFiles();
+  const total=all.length;
+  if(!total){ ps.style.display='none'; return; }
+  const opened=all.filter((_,i)=>Object.keys(localStorage).some(k=>k.startsWith('opens_')&&parseInt(localStorage[k])>0&&k.includes(all[i]?.name?.substring(0,5)||''))).length;
+  const pct=total>0?Math.round((opened/total)*100):0;
+  ps.innerHTML=`
+    <div class="progress-header">
+      <span class="progress-title">📈 تقدمك في المنصة</span>
+      <span class="progress-pct">${pct}%</span>
+    </div>
+    <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:${pct}%"></div></div>
+    <div class="progress-stats">
+      <span class="p-stat">إجمالي الملفات: <span>${total}</span></span>
+      <span class="p-stat">تم فتحها: <span>${opened}</span></span>
+      <span class="p-stat">متبقي: <span>${total-opened}</span></span>
+    </div>`;
+}
+updateProgress();
+
+// TRACK FILE OPEN
+function trackOpen(rkey){
+  const k='opens_'+rkey;
+  localStorage.setItem(k,(parseInt(localStorage.getItem(k)||'0')+1).toString());
+  updateProgress();
+}
+
+// STAR RATING
+function rateFile(rkey, val, btn){
+  playClick();
+  localStorage.setItem(rkey, val.toString());
+  const wrap=btn.closest('.stars-display');
+  wrap.querySelectorAll('.star-btn').forEach((s,i)=>s.classList.toggle('active',i<val));
+  const countEl=wrap.nextElementSibling;
+  if(countEl) countEl.textContent=val+'/5';
+  showToast('تم تقييم الملف بـ '+val+' نجوم! ⭐','🌟',2500);
+}
+
+// BERMUDA TIMERS
+const BERMUDA_TIMERS = [
+  { name:'مذاكرة مكثفة', mins:25, icon:'📚' },
+  { name:'راحة قصيرة',   mins:5,  icon:'☕' },
+  { name:'راحة طويلة',   mins:15, icon:'🌿' },
+  { name:'اختبار تجريبي',mins:45, icon:'📝' },
+  { name:'مراجعة سريعة', mins:10, icon:'⚡' },
+  { name:'حصة كاملة',    mins:60, icon:'🎯' },
+  { name:'قراءة',        mins:30, icon:'📖' },
+];
+const bermudaState={};
+
+function renderBermuda(){
+  const el=document.getElementById('bermudaGrid');
+  if(!el) return;
+  el.innerHTML=BERMUDA_TIMERS.map((t,i)=>{
+    const st=bermudaState[i]||{remaining:t.mins*60,running:false,done:false};
+    bermudaState[i]=st;
+    const mm=String(Math.floor(st.remaining/60)).padStart(2,'0');
+    const ss=String(st.remaining%60).padStart(2,'0');
+    const cls=st.done?'done':st.running?'running':'';
+    return `<div class="bermuda-card ${cls}" id="bc_${i}">
+      <div class="bermuda-name">${t.icon} ${t.name}</div>
+      <div class="bermuda-time ${cls}" id="bt_${i}">${mm}:${ss}</div>
+      <div class="bermuda-btns">
+        <button class="b-btn" onclick="bermudaToggle(${i})">${st.running?'⏸ إيقاف':'▶ ابدأ'}</button>
+        <button class="b-btn" onclick="bermudaReset(${i})">↺</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function bermudaToggle(i){
+  playClick();
+  const st=bermudaState[i];
+  if(st.done){ bermudaReset(i); return; }
+  st.running=!st.running;
+  if(st.running){
+    st.interval=setInterval(()=>{
+      st.remaining--;
+      if(st.remaining<=0){
+        st.remaining=0; st.running=false; st.done=true;
+        clearInterval(st.interval);
+        showToast(BERMUDA_TIMERS[i].name+' انتهى! 🎉','⏰',5000);
+        playDone();
+      }
+      updateBermudaCard(i);
+    },1000);
+  } else {
+    clearInterval(st.interval);
+  }
+  updateBermudaCard(i);
+}
+
+function bermudaReset(i){
+  playClick();
+  clearInterval(bermudaState[i].interval);
+  bermudaState[i]={remaining:BERMUDA_TIMERS[i].mins*60,running:false,done:false};
+  updateBermudaCard(i);
+}
+
+function updateBermudaCard(i){
+  const st=bermudaState[i];
+  const mm=String(Math.floor(st.remaining/60)).padStart(2,'0');
+  const ss=String(st.remaining%60).padStart(2,'0');
+  const cls=st.done?'done':st.running?'running':'';
+  const card=document.getElementById('bc_'+i);
+  const timeEl=document.getElementById('bt_'+i);
+  if(card){ card.className='bermuda-card '+cls; }
+  if(timeEl){ timeEl.textContent=`${mm}:${ss}`; timeEl.className='bermuda-time '+cls; }
+  const btn=card?.querySelector('.b-btn');
+  if(btn) btn.textContent=st.done?'↺ مجدداً':st.running?'⏸ إيقاف':'▶ ابدأ';
+}
+
+function playDone(){
+  try {
+    const ctx2=new (window.AudioContext||window.webkitAudioContext)();
+    [523,659,784,1047].forEach((f,i)=>{
+      const o=ctx2.createOscillator(),g=ctx2.createGain();
+      o.connect(g);g.connect(ctx2.destination);
+      o.type='sine';o.frequency.value=f;
+      g.gain.setValueAtTime(0.2,ctx2.currentTime+i*.15);
+      g.gain.exponentialRampToValueAtTime(0.001,ctx2.currentTime+i*.15+.4);
+      o.start(ctx2.currentTime+i*.15);o.stop(ctx2.currentTime+i*.15+.5);
+    });
+  } catch(e){}
+}
+
+// render bermuda when modal opens - handled in openModal below
+
+
+// THEME
+function toggleTheme(){
+  playClick();
+  document.body.classList.toggle('light');
+  const ball = document.querySelector('.toggle-ball');
+  ball.textContent = document.body.classList.contains('light') ? '☀️' : '🌙';
+  localStorage.setItem('theme', document.body.classList.contains('light') ? 'light' : 'dark');
+}
+if(localStorage.getItem('theme')==='light'){ document.body.classList.add('light'); document.querySelector('.toggle-ball').textContent='☀️'; }
+
+// MODALS
+function openModal(id){
+  playClick();
+  document.getElementById(id).classList.add('open');
+  if(id==='timesModal') renderBermuda();
+}
+function closeModal(id){ document.getElementById(id).classList.remove('open'); }
+function closeModalOutside(e,id){ if(e.target===document.getElementById(id)) closeModal(id); }
+
+// FEEDBACK
+function sendFeedback(){
+  const msg = document.getElementById('fbMsg').value.trim();
+  if(!msg){ document.getElementById('fbMsg').focus(); return; }
+  const status = document.getElementById('fbStatus');
+  status.style.display='block';
+  status.style.color='#fbbf24';
+  status.textContent='✅ شكراً! تم إرسال تعليقك بنجاح 🎉';
+  document.getElementById('fbName').value='';
+  document.getElementById('fbEmail').value='';
+  document.getElementById('fbMsg').value='';
+  setTimeout(()=>{ status.style.display='none'; closeModal('feedbackModal'); },2500);
+}
+
+// LIVE CLOCK - 12 hour
+function updateClock(){
+  const now = new Date();
+  let h=now.getHours();
+  const ampm=h>=12?'م':'ص';
+  h=h%12||12;
+  const hStr=String(h).padStart(2,'0');
+  const mStr=String(now.getMinutes()).padStart(2,'0');
+  const sStr=String(now.getSeconds()).padStart(2,'0');
+  const el=document.getElementById('liveClock');
+  if(el) el.innerHTML=`${hStr}:${mStr}:${sStr} <span style="font-size:20px;font-weight:700">${ampm}</span>`;
+}
+setInterval(updateClock,1000); updateClock();
+
+// PRAYER TIMES - Muscat approximate
+(function(){
+  const el=document.getElementById('prayerTimes');
+  if(!el) return;
+  const now=new Date();
+  const times=[
+    {name:'الفجر',h:4,m:30},{name:'الشروق',h:5,m:55},
+    {name:'الظهر',h:12,m:5},{name:'العصر',h:15,m:30},
+    {name:'المغرب',h:18,m:20},{name:'العشاء',h:19,m:45}
+  ];
+  const nowMins=now.getHours()*60+now.getMinutes();
+  let nextIdx=times.findIndex(t=>t.h*60+t.m>nowMins);
+  if(nextIdx===-1) nextIdx=0;
+  el.innerHTML=times.map((t,i)=>{
+    const timeStr=`${String(t.h).padStart(2,'0')}:${String(t.m).padStart(2,'0')}`;
+    const isNext=i===nextIdx;
+    return `<div class="time-card ${isNext?'next':''}">
+      <div class="time-name">${t.name}</div>
+      <div class="time-val">${timeStr}</div>
+      ${isNext?'<div class="time-badge">⏳ القادمة</div>':''}
+    </div>`;
+  }).join('');
+})();
+
 function openAI(){ playClick(); document.getElementById('aiModal').classList.add('open'); document.getElementById('aiInput').focus(); }
 function closeAI(){ document.getElementById('aiModal').classList.remove('open'); }
 function closeAIOutside(e){ if(e.target===document.getElementById('aiModal')) closeAI(); }
