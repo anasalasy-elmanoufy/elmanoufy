@@ -1,4 +1,19 @@
 <!DOCTYPE html>
+<!--
+════════════════════════════════════════════════════════════
+   منصة المنوفي التعليمية
+   © 2025 أنس محمد العاصي — جميع الحقوق محفوظة
+   ════════════════════════════════════
+   المطور : أنس محمد العاصي
+   المدرسة: مدرسة الخليلي
+   الجنسية: مصري
+   المقر  : المنوفية — مصر
+   ════════════════════════════════════
+   يُحظر نسخ أو توزيع أو استخدام هذا الكود
+   بأي شكل من الأشكال دون إذن كتابي صريح
+   من المطور أنس محمد العاصي.
+════════════════════════════════════════════════════════════
+-->
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
@@ -7,6 +22,8 @@
 <meta name="description" content="منصة المنوفي التعليمية — ملخصات، اختبارات نهائية، وملفات مهمة للصف العاشر والحادي عشر والثاني عشر. فيزياء، كيمياء، أحياء، رياضيات، عربي، إنجليزي وأكثر.">
 <meta name="keywords" content="منصة المنوفي, ملفات دراسية, اختبارات نهائية, ملخصات, الصف العاشر, الصف الحادي عشر, الصف الثاني عشر, فيزياء, كيمياء, أحياء, رياضيات, مدرسة الخليلي, عُمان, مصر">
 <meta name="author" content="أنس محمد العاصي">
+<meta name="copyright" content="© 2025 أنس محمد العاصي — جميع الحقوق محفوظة">
+<meta name="owner" content="أنس محمد العاصي — مدرسة الخليلي — المنوفية — مصر">
 <meta name="robots" content="index, follow">
 <meta name="language" content="Arabic">
 <link rel="canonical" href="https://anasalasy-elmanoufy.github.io/elmanoufy/">
@@ -572,6 +589,35 @@ body.light .search-result-item { color:#1e293b; }
 @keyframes toastOut { to{opacity:0;transform:translateY(-10px) scale(.95)} }
 body.light .toast { background:linear-gradient(135deg,#fff,#f0f4ff); color:#1e293b; }
 
+/* WATERMARK */
+body::after {
+  content: "© أنس محمد العاصي — منصة المنوفي";
+  position:fixed; bottom:8px; left:50%; transform:translateX(-50%);
+  font-size:10px; color:rgba(251,191,36,.15);
+  pointer-events:none; z-index:9999;
+  white-space:nowrap; user-select:none;
+  font-family:Arial,sans-serif; font-weight:700;
+  letter-spacing:1px;
+}
+
+/* FOOTER */
+.site-footer {
+  text-align:center;
+  padding:28px 16px 20px;
+  margin-top:40px;
+  border-top:1px solid rgba(255,255,255,.07);
+  color:var(--muted);
+  font-size:12px;
+  line-height:2;
+  user-select:none;
+}
+body.light .site-footer { border-top-color:rgba(0,0,0,.08); }
+.site-footer .footer-name {
+  font-size:14px; font-weight:800;
+  background:linear-gradient(135deg,#fbbf24,#10b981);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+}
+.site-footer .footer-lock { font-size:18px; margin-bottom:4px; }
 </style>
 </head>
 <body>
@@ -1414,6 +1460,16 @@ async function sendAI(){
   const msg = input.value.trim();
   if(!msg) return;
   playClick();
+
+  // تحقق من API Key
+  let apiKey = localStorage.getItem('anthropic_key') || '';
+  if(!apiKey){
+    apiKey = prompt('🔑 أدخل Anthropic API Key عشان يشتغل المعلم الذكي:\n(تلاقيه على console.anthropic.com)');
+    if(!apiKey) return;
+    localStorage.setItem('anthropic_key', apiKey.trim());
+    apiKey = apiKey.trim();
+  }
+
   input.value = '';
   const msgs = document.getElementById('aiMessages');
   msgs.innerHTML += `<div class="ai-msg user">${msg}</div>`;
@@ -1424,7 +1480,7 @@ async function sendAI(){
       method:'POST',
       headers:{
         'Content-Type':'application/json',
-        'x-api-key': window.ANTHROPIC_API_KEY || '',
+        'x-api-key': apiKey,
         'anthropic-version':'2023-06-01',
         'anthropic-dangerous-direct-browser-access':'true'
       },
@@ -1436,15 +1492,59 @@ async function sendAI(){
       })
     });
     const data = await res.json();
+    if(data.error){
+      if(data.error.type==='authentication_error'){
+        localStorage.removeItem('anthropic_key');
+        document.getElementById('typing').outerHTML=`<div class="ai-msg bot">❌ API Key غلط، اضغط على المعلم الذكي تاني وأدخل الـ Key الصحيح.</div>`;
+      } else {
+        document.getElementById('typing').outerHTML=`<div class="ai-msg bot">❌ خطأ: ${data.error.message}</div>`;
+      }
+      return;
+    }
     const reply = data.content?.[0]?.text || 'عذراً، حدث خطأ. حاول مرة أخرى.';
-    document.getElementById('typing').remove();
-    msgs.innerHTML += `<div class="ai-msg bot">${reply}</div>`;
+    document.getElementById('typing').outerHTML=`<div class="ai-msg bot">${reply}</div>`;
   } catch(e) {
-    document.getElementById('typing').remove();
-    msgs.innerHTML += `<div class="ai-msg bot">عذراً، حدث خطأ في الاتصال. حاول مرة أخرى. 🙏</div>`;
+    document.getElementById('typing').outerHTML=`<div class="ai-msg bot">❌ تعذر الاتصال، تحقق من الإنترنت.</div>`;
   }
   msgs.scrollTop = msgs.scrollHeight;
 }
+</script>
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-lock">🔐</div>
+  <div class="footer-name">© 2025 أنس محمد العاصي</div>
+  <div>منصة المنوفي التعليمية — جميع الحقوق محفوظة</div>
+  <div>مدرسة الخليلي · المنوفية · مصر</div>
+  <div style="margin-top:6px;font-size:11px;opacity:.6">يُحظر نسخ أو إعادة توزيع أي محتوى دون إذن صريح من المطور</div>
+</footer>
+
+<script>
+// ===== أقوى حماية =====
+// منع الزر الأيمن
+document.addEventListener('contextmenu',e=>e.preventDefault());
+// منع تحديد النص
+document.addEventListener('selectstart',e=>e.preventDefault());
+// منع السحب
+document.addEventListener('dragstart',e=>e.preventDefault());
+// منع اختصارات لوحة المفاتيح
+document.addEventListener('keydown',e=>{
+  if(e.key==='F12'||(e.ctrlKey&&['u','U','s','S','a','A','p','P'].includes(e.key))||(e.ctrlKey&&e.shiftKey&&['i','I','j','J','c','C','k','K'].includes(e.key))){
+    e.preventDefault();e.stopPropagation();return false;
+  }
+});
+// منع النسخ والقص
+document.addEventListener('copy',e=>{e.clipboardData.setData('text/plain','🚫 النسخ غير مسموح');e.preventDefault();});
+document.addEventListener('cut',e=>e.preventDefault());
+// كشف DevTools
+(function(){
+  setInterval(()=>{
+    if(window.outerWidth-window.innerWidth>160||window.outerHeight-window.innerHeight>160){
+      document.body.innerHTML='<div style="display:flex;align-items:center;justify-content:center;height:100vh;background:#030712;color:#fbbf24;font-size:22px;font-family:Arial;text-align:center;flex-direction:column;gap:16px"><span style="font-size:60px">🚫</span><span>غير مسموح بفتح أدوات المطور</span><span style="font-size:14px;color:#666">منصة المنوفي — محمية بالكامل</span></div>';
+    }
+  },500);
+})();
+// منع print screen (تنبيه)
+window.addEventListener('keyup',e=>{if(e.key==='PrintScreen'){navigator.clipboard.writeText('').catch(()=>{});alert('🚫 التقاط الشاشة غير مسموح به في منصة المنوفي');}});
 </script>
 </body>
 </html>
