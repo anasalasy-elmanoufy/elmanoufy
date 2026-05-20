@@ -619,7 +619,32 @@ body.light .site-footer { border-top-color:rgba(0,0,0,.08); }
 }
 .site-footer .footer-lock { font-size:18px; margin-bottom:4px; }
 </style>
-</head>
+<script>
+document.addEventListener('contextmenu', event => event.preventDefault());
+
+document.onkeydown = function(e) {
+    if (e.keyCode == 123) {
+        return false;
+    }
+    if (e.ctrlKey && e.shiftKey && (
+        e.keyCode == 'I'.charCodeAt(0) ||
+        e.keyCode == 'J'.charCodeAt(0) ||
+        e.keyCode == 'C'.charCodeAt(0)
+    )) {
+        return false;
+    }
+    if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+        return false;
+    }
+};
+
+setInterval(function() {
+    debugger;
+}, 100);
+
+console.clear();
+console.log("%cProtected Website", "color:red;font-size:30px;");
+</script></head>
 <body>
 
 <!-- TOAST CONTAINER -->
@@ -1476,13 +1501,13 @@ async function sendAI(){
   msgs.innerHTML += `<div class="ai-msg bot" id="typing">⏳ جاري التفكير...</div>`;
   msgs.scrollTop = msgs.scrollHeight;
   try {
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
+    const res = await fetch('https://openrouter.ai/v1/chatcompletions', {
       method:'POST',
       headers:{
         'Content-Type':'application/json',
-        'x-api-key': apiKey,
-        'anthropic-version':'2023-06-01',
-        'anthropic-dangerous-direct-browser-access':'true'
+        'Authorization': `Bearer ${apiKey}` ,
+        
+        
       },
       body: JSON.stringify({
         model:'claude-sonnet-4-20250514',
